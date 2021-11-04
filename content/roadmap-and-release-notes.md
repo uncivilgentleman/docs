@@ -1,5 +1,5 @@
 ---
-title: Roadmap for Pop!_OS
+title: Roadmap and Release Notes for Pop!_OS
 description: >
   Focus and features for each release!
 keywords:
@@ -31,8 +31,9 @@ point release. When features are completed, they are added to the latest "stable
 ## Currently-Planned Features
 
 These are features which we would either like to, or are already in the process of, implementing.
-As these are completed, they will be listed underneath a release cycle, indicating which cycle
-the feature was implemented during. When a feature is listed as being implemented during the 20.04
+As these are completed, they will be listed underneath a release cycle, indicating which cycle the feature was implemented during.
+
+When a feature is listed as being implemented during the 20.04
 release cycle, this means that it was completed before 20.04 was released, and thus was available
 on release for 20.04.
 
@@ -74,7 +75,9 @@ The current goal is to use this for:
 ### Installer
 
 * Alongside OS installation option
+
 * Resizing LUKS and LVM partitions
+
 * Create Rust bindings for `blkid`, `devmapper`, and `cryptsetup`
 * Create Rust crates for disk-probing and management
 * Separate disk management from the installer
@@ -86,9 +89,12 @@ The current goal is to use this for:
 
 ### Packaging
 
-* Move away from Launchpad and host our own apt repositories
-* Rewrite our packaging CI in Rust
+~~* Move away from Launchpad and host our own apt repositories~~
+
+~~* Rewrite our packaging CI in Rust~~
+
 * Support periodic watching of repositories for commits to be built
+
 * Support distributing package builds to multiple build servers
 * Possibly support a web interface for managing the repository and build servers
 
@@ -100,19 +106,12 @@ The current goal is to use this for:
 * Remove System76 driver for System76 hardware customers. Integrate necessary information and features into the desktop.
 * Pop features in GNOME Settings > About for the new GNOME 3.36 panel design
 * Transition Thelio I/O firmware updates to LVFS
-* Battery threshold settings for System76 hardware with open firmware
-* Keyboard configuration utility for System76 hardware with open firmware
 
-[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
+~~* Battery threshold settings for System76 hardware with open firmware~~
 
-### Pop!_Shell
+~~* Keyboard configuration utility for System76 hardware with open firmware~~
 
-The #1 competitor to GNOME Shell for our users is i3wm. Tiling window management in GNOME Shell is currently really bad, but we can fix this with:
-
-* Advanced window tiling
-* Setting to launch applications tiled
-* Keyboard shortcuts update for window navigation and movement
-* Quick launcher for launching apps and switching windows
+[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/ 
 
 ### Pop!_Support
 
@@ -124,12 +123,18 @@ Create a utility for our support team and users, which contains:
 
 ### Pop!_Upgrade
 
-* Add support for updating the recovery partition
-* Add support for refreshing the OS from GNOME Settings
+~~* Add support for updating the recovery partition~~
+
+~~* Add support for refreshing the OS from GNOME Settings~~
+
 * Reduce the bandwidth required to update the recovery partition
-* Switch to using asynchronous I/O for all network connections
+
+~~* Switch to using asynchronous I/O for all network connections~~
+
 * Replace all usage of `futures01` & combinators with `futures03` & async/await
-* Improve handling of network timeouts by integrating our `async-fetcher` crate
+
+~~Improve handling of network timeouts by integrating our `async-fetcher` crate~~
+
 * Upgrade to `dbus-rs` 0.7, and investigate handling requests in an async fashion
 
 ### Popsicle
@@ -159,9 +164,124 @@ Create a utility for our support team and users, which contains:
 
 ---
 
+<!--These are features which have been implemented during the 19.10 release cycle, leading up to 20.04. -->
+
+## Pop!_OS 21.10
+
+* 5.15 kernel
+* New Applications view/launcher
+* Rust based continuous integration (CI)  for Pop!OS specific packages
+
+## Pop!_OS 21.04
+
+Pop!_OS 21.04 was released on June 29, 2021.
+
+## COSMIC Desktop - Computer Operating System Main Interface Components
+
+* Pop Shell Launcher is now the default method for opening/switching applications
+* The Activities overview has been split into separate Workspaces and Applications views for clearer navigation
+* Users can now configure their preferred default experience during the initial setup customizing it for their workflow
+* An application dock is now available for easy launching and switching of applications
+* The minimize button is now shown by default
+* Settings for COSMIC Desktop are integrated directly with System Settings, under a new "Desktop" section
+
+### Pop Shell
+
+* Improvements to Launcher search to better match a wider range of applications and recent files
+* Launcher now displays 7 search results to avoid growing too large on displays with low vertical space
+* Launcher gained plugin support, bringing along support for file navigation, recent document searching, and tab auto-completions
+* Levenshtein distance sorting algorithm added for improving search result quality
+* Right clicking an application in search results now offers a context menu with an option to launch with dedicated graphics
+* Closing the active window in the Launcher with Ctrl + Q
+* Ability to tile and stack windows with the mouse
+* Various minor usability improvements and features
+
+* Recovery Partition Upgrades - Pop!_OS Recovery Partitions can now be upgraded to a newer version of Pop!_OS
+
+* Updated system-level components and packages
+
+* Stability and performance improvements for Pop!_Shop
+
+* Linux Kernel 5.11
+
+## Pop!_OS 20.10
+
+Pop!_OS 20.10 was released on October 22, 2020.
+
+* System apt sources have been converted to DEB822 sources format. Repoman was updated to take advantage of this in order to support defining mirrors for system sources.
+
+* System76 Power now supports a compute graphics mode. This is useful to prevent any applications from accessing it for display output, but leaving it available for CUDA and OpenCL applications.
+
+* NVIDIA driver updates enabled Reverse PRIME support. This allows for external displays to be used while on Intel graphics in Hybrid graphics mode.
+
+* Redesign of keyboard panel in collaboration with GNOME. Adds support for managing multiple bindings for a shortcut.
+
+* Popsicle was released as a flatpak on Flathub, for the benefit of other Linux distributions.
+
+## Pop Shell
+
+* Added ability to hide window title bars in X11 sessions. These windows can still be dragged by holding `Super` and dragging from anywhere within the window.
+* Added ability to change active hint colors, which also changes the window overlay and stack tab colors.
+* Added dialogs for managing floating window exceptions, which enable defining certain applications or windows to always float.
+* Added smart gaps behavior to extension preferences, which hides the outer gap when there is only one window on a work area.
+* Added a new stacked tiles feature, which permits stacking multiple windows into the same tile, and switching between them via a tab header. This can be toggled on any window node in the tree by pressing `Super` + `S`.
+* Many fixes and improvements have been applied throughout the release, with more to come post-release
+
+### GNOME 3.38
+
+* The session panel menu now has a new Restart option
+* The Application Grid is now more compact, and scales based on screen dimensions and resolution.
+* Improved responsiveness, less stuttering, and better animations
+* WiFi settings now show a QR code for sharing your Wi-Fi Hotspot with mobile devices
+* Option to show battery percentage
+* Screenshot and Sound Recorder had a visual refresh
+* New parental controls feature after adding child accounts
+* Tracker has moved to a distributed database model, with improved performance and Flatpak support
+
+### Linux Kernel 5.8
+
+---
+
 ## Pop!_OS 20.04
 
-These are features which have been implemented during the 19.10 release cycle, leading up to 20.04.
+Pop!_OS was released on April 29, 2020
+
+### Important: To advance keyboard driven navigation, keyboard shortcuts have changed.
+
+* Lock Screen is now Super + Escape
+* Move to Workspace Up or Down is now Super + Ctrl + Up/Down Arrow or K/J
+* Close Window is now Super + Q
+* Toggle Maximize is now Super + M
+
+* Dark mode is enabled by default. Go to Appearance in Settings to change between light and dark mode.
+
+* Automatic Window Tiling: To activate tiling mode, click the tiling menu icon at the top right of the screen and toggle on Tile Windows. Open and newly launched windows will be automatically tiled. Toggling off Tile Windows will revert to floating mode.
+
+* New Application Switcher and Launcher:  Type `Super` + `/` to activate the new application switcher and launcher. Instead of `Super` + `Tabbing` through application icons, simply type `Super` + `/` and start typing the name of the application you want to switch to or launch.
+
+* Flatpak support with the Flathub Repository:  Pop!_Shop now includes Flatpak application support and the Flathub application repository by default. The source of applications is visible when viewing applications details.  System76 continues to curate and package key applications such as Steam, Atom, and VS Code. Pop!_OS repositories are prioritized to provide the best user experience for these applications.
+
+* Hybrid Graphics: Customers with integrated and discrete graphics can now choose Hybrid Graphics from the battery section of the user menu. While in Hybrid Graphics mode, right clicking an application in the Activities overview offers a "Launch Using Dedicated Graphics Card" option. This enables customers to use battery-saving integrated graphics while launching specific apps on the dedicated GPU.
+
+* Application Indicators: Application indicators are now present at the top right of the desktop by default.
+
+* More Accessible Pop!_Picks: Pop!_Shop now loads up to 20 Pop!_Picks making highlighted applications more accessible. These are curated and preferred applications tested to provide the best experience.
+
+# GNOME 3.36
+
+* New lockscreen
+* Additional performance improvements
+* New Extensions application to manage GNOME Shell extensions and their settings
+* Better organized power off / logout section in the user menu
+* Most password dialogs now have the option to reveal the password by clicking the "eye" icon
+* App folders in the application overview can now be renamed
+* GNOME Settings sections have been rearranged for easier navigation
+* The privacy section now lists applications that have been granted permission to access location services, camera and microphone. Access can be revoked on a per-app basis.
+* The user and about sections both received an interface redesign. Both are more explicit in their presentation of information, and make changing settings easier.
+
+### Linux Kernel 5.4
+
+---
 
 ### Contributions to upstream projects
 
