@@ -55,9 +55,9 @@ To avoid discomfort, make sure the system is well ventilated and/or on a flat su
 
 ## NVIDIA Driver Management
 
-### Install NVIDIA Driver (from Repo)
+### Install NVIDIA Driver (from Repository)
 
-Open a Terminal with <kbd>Super</kbd> + <kbd>T</kbd> or by searching for "Terminal" in the **Applications** menu. With the Terminal open, run the following command:
+Open a Terminal with `SUPER` + `T` or by searching for "Terminal" in the `Applications` menu. With the Terminal open, run the following command:
 
 ```bash
 sudo apt update
@@ -67,9 +67,29 @@ sudo apt install system76-driver-nvidia
 
 ### Install NVIDIA (from NVIDIA's Site)
 
-> **NOTE:** This method should be used only for experimentation and troubleshooting. The preferred method is to install NVIDIA drivers from the System76 Repo.
+**NOTE:** This method is included for users who are running distributions that don't support the `system76-driver-nvidia` package, or would like to test a beta version.
 
-If you would need/like to install an NVIDIA driver directly (perhaps to try a beta version) you can do so with these steps.
+If you would need/like to install an NVIDIA driver directly you can do so with these steps.
+
+1. Visit NVIDIA's download website: https://www.nvidia.com/Download/index.aspx?lang=en-us 
+
+2. Use the dropdown menus to select `GeForce` and `Linux 64-bit`, then click `Search`
+
+3. On the next pages click and confirm `Download`.
+
+4. Change to the Downloads directory, and make the .run file executable.
+
+5. Switch to TTY
+
+6. Stop `gdm`
+
+7. Excute the .run file with `sudo`.
+
+8. Answer the prompts.
+
+9. Update `initramfs`
+
+10. Reboot
 
 ### Reinstall NVIDIA Driver
 
@@ -85,7 +105,7 @@ sudo apt clean
 
 ![Removing NVIDIA](/images/login-loop/purge-nvidia.png)
 
-After the NVIDIA driver has been removed, add it back using the following commands:
+After the NVIDIA driver has been removed, add it back using the following commands: 
 
 ```bash
 sudo apt update
