@@ -13,14 +13,18 @@ keywords:
 facebookImage: /_social/article
 twitterImage: /_social/article
 
-hidden: false
+hidden: true
 section: software
 tableOfContents: true
 
 redirect_from:
+  - /Dock (Move or Customize)
+  - /articles/dash-to-dock
   - /movelauncher
   - /articles/move-launcher
 ---
+
+**NOTE:** This information only applies to Pop!\_OS 20.04 and older. The base Dash to Dock extension has been forked, adjusted and is now included in Pop!\_OS 21.04+ as the COSMIC dock. For more information visit [this link](). Ubuntu users can still choose to manually add Dash To Dock.
 
 Pop!\_OS and Ubuntu both contain an application dock on the left side of the screen. In Pop!\_OS, the dock is only visible when the Activities menu is open. In Ubuntu, the dock is always visible. By installing a GNOME extension called Dash to Dock, you can adjust this preference, move the dock to the bottom of the screen, and more.
 
