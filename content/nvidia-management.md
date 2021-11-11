@@ -45,7 +45,7 @@ To read more about Graphics switching, refer to this [aricle for pop](/articles/
 
 ### Heat
 
-Systems with NVIDIA cards tend to operate at temperatures an order of magnitude higher than other laptops and ultrabooks without GPUs.
+Systems with NVIDIA cards tend to operate at temperatures an order of magnitude higher than other laptops and ultra-books without GPUs.
 
 Also, System76 machines specifically are designed to run hotter than other systems to avoid thermal throttling. Under load, CPU temperatures in the 70s, 80s or even 90s (Celsius) may be considered normal, and GPU Temperatures of 50-80C are also expected.
 
@@ -64,32 +64,6 @@ sudo apt update
 sudo apt full-upgrade
 sudo apt install system76-driver-nvidia
 ```
-
-### Install NVIDIA (from NVIDIA's Site)
-
-**NOTE:** This method is included for users who are running distributions that don't support the `system76-driver-nvidia` package, or would like to test a beta version.
-
-If you would need/like to install an NVIDIA driver directly you can do so with these steps.
-
-1. Visit NVIDIA's download website: https://www.nvidia.com/Download/index.aspx?lang=en-us 
-
-2. Use the dropdown menus to select `GeForce` and `Linux 64-bit`, then click `Search`
-
-3. On the next pages click and confirm `Download`.
-
-4. Change to the Downloads directory, and make the .run file executable.
-
-5. Switch to TTY
-
-6. Stop `gdm`
-
-7. Excute the .run file with `sudo`.
-
-8. Answer the prompts.
-
-9. Update `initramfs`
-
-10. Reboot
 
 ### Reinstall NVIDIA Driver
 
@@ -114,3 +88,54 @@ sudo apt install system76-driver-nvidia
 ```
 
 After the installation has completed, type `sudo systemctl reboot` and try logging in again.
+
+### Install NVIDIA (from NVIDIA's Site)
+
+**NOTE:** This method is included for users who are running distributions that don't support the `system76-driver-nvidia` package, or would like to test a beta version.
+
+To install an NVIDIA driver directly follow these steps.
+
+1. Visit NVIDIA's [download website](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+
+2. Use the dropdown menus to select `GeForce` and `Linux 64-bit`, then click `Search`
+
+3. On the next two (2) pages, click `Download`. The second page/click confirms the download.
+
+4. Change to the Downloads directory, and make the .run file executable.
+
+5. Switch to TTY
+
+<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>F5</kbd>
+
+6. Stop `gdm`
+
+```bash
+sudo systemctl stop gdm
+```
+
+7. Execute the .run file with `sudo`.
+
+```bash
+sudo .~/Downloads/NVIDIA-Linux-x86-64-###.##.##.run
+```
+
+8. Answer the prompts.
+
+9. Update `initramfs`
+
+```bash
+sudo update-initramfs -c -k all
+```
+
+10. Reboot
+
+```bash
+sudo reboot now
+```
+
+## Manage NVIDIA Settings
+
+
+### NVIDIA X Server Settings
+
+### Green with Envy
